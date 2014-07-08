@@ -1,25 +1,25 @@
 def solve():
     n = input()
     data = map(int, raw_input().split())
-    max = 0
-    for i in range(n):
-        for j in range(i,n):
-            size = (j-i+1)*reduce(lambda x, y: min(x,y), data[i:j+1])
-            if max < size:
-                max = size
-    print max
+    max_height = max(data)
+    min_height = min(data)
+    result = 0
+    flag = [0] * max_height
+    result = [0] * max_height
+    for height in data:
+        for i in range(0,max_height):
+            if i < height:
+                flag[i] = flag[i] + 1
+            else:
+                result[i] = max(flag[i], result[i])
+                flag[i] = 0
+    result[max_height-1] = max(flag[max_height-1], result[max_height-1]);
+    max_size = 0
+    for i in range(min_height, max_height):
+        max_size = max(result[i] * (i + 1), max_size)
+    print max_size
 
-def min(lhs, rhs):
-    if lhs > rhs:
-        return rhs
-    else:
-        return lhs
-
-
-
-
-
-
+        
 num_case = input()
 
 for i in range(num_case):
