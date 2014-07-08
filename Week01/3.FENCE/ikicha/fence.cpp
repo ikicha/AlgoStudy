@@ -24,7 +24,7 @@ inline long solve() {
     }
     long result = 0;
     int* temp = new int[max_height+1];
-    for(int i = min_height; i < max_height; i++)
+    for(int i = min_height; i <= max_height; i++)
         temp[i] = 0;
     for(int i = 0; i < n; i++)
         for(int j = min_height; j <= max_height; j++)
