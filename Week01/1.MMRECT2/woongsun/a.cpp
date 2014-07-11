@@ -1,7 +1,16 @@
 #include <iostream>
+#include <string>
 #include <vector>
 using namespace std;
 
+template<typename C> 
+void dump(const char *desc, C c) 
+{ 
+	cout.width(12);
+	cout << left << desc << "==> ";
+	copy(c.begin(), c.end(), std::ostream_iterator<typename C::value_type>(cout," ")); 
+	cout << endl; 
+}
 class Point
 {
 	public:
@@ -39,6 +48,10 @@ int main()
 		}
 	}
 	
+	for(int i = 0; i < T; i++)
+	{
+		dump("vpnt : ", vpnt[i]);
+	}
 
 	return 0;
 }
