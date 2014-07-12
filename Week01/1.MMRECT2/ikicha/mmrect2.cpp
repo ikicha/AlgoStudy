@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-
+#include <fstream>
 using namespace std;
 
 bool compareByX(const pair<int, int> lhs, const pair<int, int> rhs) {
@@ -10,14 +10,15 @@ bool compareByX(const pair<int, int> lhs, const pair<int, int> rhs) {
 
 int main() {
     int num_case;
-    cin >> num_case;
+    ifstream fin("input.txt");
+    fin>> num_case;
     for(int c = 0; c < num_case; c++) {
         int num;
-        cin >> num;
+        fin >> num;
         vector< pair <int, int> > data;
         for(int i = 0; i < num; i++) {
             int temp1, temp2;    
-            cin >> temp1 >> temp2;
+            fin >> temp1 >> temp2;
             data.push_back(make_pair<int, int>(temp1, temp2));
         }
         sort(data.begin(), data.end(), compareByX);
